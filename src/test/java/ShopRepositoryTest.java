@@ -30,10 +30,9 @@ public class ShopRepositoryTest {
 
     @Test
     public void shouldRemoveProductNoFoundId() {
-        repo.remove(5);
-        Product[] expected = {product1, product2, product3, product4, product5};
-        Product[] actual = repo.findAll();
-        Assertions.assertArrayEquals(expected, actual);
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repo.remove(5);
+        });
     }
 
 }
